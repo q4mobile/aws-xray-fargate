@@ -1,0 +1,18 @@
+AWSTemplateFormatVersion: 2010-09-09
+Parameters:
+  Stage:
+    Type: String
+    Description: application stage (dev,test,stage,prod)
+    AllowedValues:
+      - dev
+      - test
+      - stage
+      - prod
+Resources:
+  ECRR4EZX0:
+    Type: 'AWS::ECR::Repository'
+    Properties:
+      RepositoryName: !Join 
+        - ''
+        - - !Ref Stage 
+          - /xray-fargate-daemon
